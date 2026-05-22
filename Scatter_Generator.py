@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
@@ -110,5 +112,5 @@ def plot_co2_chart_from_csv(file_path):
 
 # ================= 測試區塊 =================
 if __name__ == "__main__":
-    csv_file_name = "Data_20260106.csv"
+    csv_file_name = os.path.join("input", "Data_20260106.csv")
     plot_co2_chart_from_csv(csv_file_name)
