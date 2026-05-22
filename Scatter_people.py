@@ -135,13 +135,16 @@ def plot_multiple_co2_charts(datasets, output_filename="CO2_people.png"):
     plt.savefig(output_filename, dpi=100)
     print(f"圖表已存檔為：{output_filename} (尺寸: 1920x1080 pixels)")
     
-    plt.show()
+    # plt.show()
 
 # ================= 測試區塊 =================
 if __name__ == "__main__":
+
+    import os
+
     my_datasets = [
-        {"file": "20260206_ClassBegin.csv", "label": "2/6 上課", "color": "#1f77b4"},
-        {"file": "20260206_ClassEnd.csv", "label": "2/6 下課", "color": "#ff7f0e"}
+        {"file": os.path.join("input", "20260206_ClassBegin.csv"), "label": "2/6 上課", "color": "#1f77b4"},
+        {"file": os.path.join("input", "20260206_ClassEnd.csv"), "label": "2/6 下課", "color": "#ff7f0e"}
     ]
     
-    plot_multiple_co2_charts(my_datasets, output_filename="CO2_people.png")
+    plot_multiple_co2_charts(my_datasets, output_filename=os.path.join("figure", "CO2_people.png"))
