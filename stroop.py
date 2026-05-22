@@ -297,7 +297,7 @@ class StroopTest:
         readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # 1. 匯出每題詳細原始資料：供檢視單次測驗的每一題狀況
-        detail_filename = f"stroop_detail_{timestamp_str}.csv"
+        detail_filename = os.path.join("output", f"stroop_detail_{timestamp_str}.csv")
         # 使用 utf-8-sig 確保用 Excel 開啟時中文不會亂碼
         with open(detail_filename, mode='w', newline='', encoding='utf-8-sig') as f:
             writer = csv.writer(f)
@@ -306,7 +306,7 @@ class StroopTest:
                 writer.writerow([readable_time, r['trial'], r['condition'], r['rt'], "是" if r['correct'] else "否"])
 
         # 2. 寫入總體摘要資料庫：適合長期累積多名受試者或多次的成績
-        summary_filename = "stroop_summary_database.csv"
+        summary_filename = os.path.join("output", "stroop_summary_database.csv")
         file_exists = os.path.isfile(summary_filename)
         with open(summary_filename, mode='a', newline='', encoding='utf-8-sig') as f:
             writer = csv.writer(f)
